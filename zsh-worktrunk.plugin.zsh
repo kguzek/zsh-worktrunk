@@ -1,6 +1,15 @@
+alias wtl='wt list'
 alias wts='wt switch'
-alias wtsm='wt switch main'
+alias wtsm='wt switch $(wt_main_tree)'
 alias wtsc='wt switch --create'
 alias wtd='wt remove'
 alias wtD='wt remove -D'
-alias wtl='wt list'
+
+wt_main_tree() {
+  wt list --format json | jq -r '
+    .items
+    | map(select(.worktree.main))
+    | first
+    | .worktree.path
+  '
+}
