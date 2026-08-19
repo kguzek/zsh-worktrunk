@@ -1,0 +1,6 @@
+alias wts='wt switch'
+alias wtsm='wt switch main'
+alias wtsc='wt switch --create'
+alias wtd='wt remove'
+alias wtD='wt remove -D'
+alias wtl='wt list'
